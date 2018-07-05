@@ -53,3 +53,10 @@ export function nextUpdate({ lain }: { lain: Lain }): ThunkAction {
 		dispatch(updateHash({ time }))
 	}
 }
+
+export function voice(): ThunkAction {
+	return async () => {
+		console.log('https://github.com/elzup/lain-time')
+		console.log('https://twitter.com/_elzup_')
+	}
+}

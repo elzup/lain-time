@@ -7,7 +7,7 @@ import NavBar from '../NavBarContainer'
 
 import type { State, Lain } from '../../types'
 import { getLain } from './selectors'
-import { updateHash } from './logic'
+import { updateHash, voice } from './logic'
 
 type OProps = {
 	match: Match,
@@ -18,11 +18,11 @@ type Props = {
 	time: number,
 	history: RouterHistory,
 	updateHash: typeof updateHash,
+	voice: typeof voice,
 }
 
 const C = (props: Props) => (
 	<div>
-		<NavBar />
 		<Grid container justify="center" style={{ marginBottom: '100px' }}>
 			<Grid item xs={12} md={10}>
 				<div>{JSON.stringify(props.lain)}</div>
@@ -33,7 +33,8 @@ const C = (props: Props) => (
 
 class Container extends React.Component<Props> {
 	componentDidMount() {
-		const { updateHash, time } = this.props
+		const { updateHash, time, voice } = this.props
+		voice()
 		updateHash({ time })
 	}
 	render() {
@@ -48,7 +49,7 @@ const ms = (state: State, op: OProps) => {
 
 const conn = connect(
 	ms,
-	{ updateHash },
+	{ updateHash, voice },
 )
 
 export default conn(Container)
