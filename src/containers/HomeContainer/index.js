@@ -25,7 +25,7 @@ const C = (props: Props) => (
 		<NavBar />
 		<Grid container justify="center" style={{ marginBottom: '100px' }}>
 			<Grid item xs={12} md={10}>
-				{props.lain}
+				<div>{JSON.stringify(props.lain)}</div>
 			</Grid>
 		</Grid>
 	</div>
@@ -37,6 +37,7 @@ class Container extends React.Component<Props> {
 		updateHash({ time })
 	}
 	render() {
+		debugger
 		return C(this.props)
 	}
 }

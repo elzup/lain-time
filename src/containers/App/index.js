@@ -10,8 +10,8 @@ import ZeroContainer from '../HomeContainer/Zero'
 const RouteApp = () => (
 	<Router>
 		<Switch>
-			<Route path="/" component={ZeroContainer} />
-			<Route path="/:time" component={HomeContainer} />
+			<Route exact path="/" component={ZeroContainer} />
+			<Route exact path="/:time" component={HomeContainer} />
 		</Switch>
 	</Router>
 )
