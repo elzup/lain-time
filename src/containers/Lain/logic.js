@@ -4,6 +4,7 @@ import crypto from 'crypto'
 import type { ThunkAction, Lain } from '../../types'
 import * as actions from './actions'
 import { now } from '../../utils'
+import { getMetas } from '../../utils/meta'
 
 const sleep = msec => new Promise(resolve => setTimeout(resolve, msec))
 
@@ -19,11 +20,14 @@ const getRand = (dpi: number, offset: number, rands: number[]) => {
 }
 const norm = v => parseInt(v, 16) / 16
 
-function makeLain(seedTime: number): Lain {
-	const time = seedTime
+function lainSeed(time: number): string {
+	return getMetas() + `${time}`
+}
+
+function makeLain(time: number): Lain {
 	const hash = crypto
 		.createHash('sha1')
-		.update(`${time}`)
+		.update(lainSeed(time))
 		.digest('hex')
 	const rands = hash.split('').map(norm)
 	return {
