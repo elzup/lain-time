@@ -11,12 +11,12 @@ import { updateHash } from './logic'
 
 type OProps = {
 	match: Match,
-	history: RouterHistory,
 }
 
 type Props = {
 	lain: ?Lain,
 	time: number,
+	history: RouterHistory,
 	updateHash: typeof updateHash,
 }
 
@@ -37,7 +37,6 @@ class Container extends React.Component<Props> {
 		updateHash({ time })
 	}
 	render() {
-		debugger
 		return C(this.props)
 	}
 }

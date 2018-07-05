@@ -2,16 +2,16 @@
 import React from 'react'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
-import HomeContainer from '../HomeContainer'
-import ZeroContainer from '../HomeContainer/Zero'
+import Lain from '../Lain'
+import Zero from '../Zero'
 
 // const PreComp = (props: any) => <div>{JSON.stringify(props)}</div>
 
 const RouteApp = () => (
 	<Router>
 		<Switch>
-			<Route exact path="/" component={ZeroContainer} />
-			<Route exact path="/:time" component={HomeContainer} />
+			<Route exact path="/" component={Zero} />
+			<Route exact path="/:time" component={Lain} />
 		</Switch>
 	</Router>
 )

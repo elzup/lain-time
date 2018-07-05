@@ -9,3 +9,5 @@ export function sleep(msec: number): Promise<void> {
 export function makeDayLabel(daystring?: string): string {
 	return moment(daystring).format('YYYY-MM-DD')
 }
+
+export const now = () => new Date().getTime()

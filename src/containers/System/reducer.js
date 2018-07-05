@@ -3,11 +3,11 @@ import type { Action } from '../../types'
 import { Actions } from './actionTypes'
 
 export type State = {
-	hasTime: boolean
+	hasTime: boolean,
 }
 
 export const initialState: State = {
-	hasTime: false
+	hasTime: false,
 }
 
 export default function(state: State = initialState, action: Action): State {
