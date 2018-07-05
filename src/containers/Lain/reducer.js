@@ -7,6 +7,8 @@ export type State = Home
 export const initialState: State = {
 	lain: {
 		hash: '',
+		time: 0,
+		next: 0,
 	},
 }
 

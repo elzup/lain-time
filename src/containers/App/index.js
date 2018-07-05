@@ -11,7 +11,9 @@ const RouteApp = () => (
 	<Router>
 		<Switch>
 			<Route exact path="/" component={Zero} />
-			<Route exact path="/:time" component={Lain} />
+			<Route exact path="/0" component={Zero} />
+			<Route exact path="/0/:time" component={Lain} />
+			{/* <Zero /> */}
 		</Switch>
 	</Router>
 )

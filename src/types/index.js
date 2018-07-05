@@ -31,6 +31,8 @@ export type Store = ReduxStore<State, Action, Dispatch>
 
 export type Lain = {
 	hash: string,
+	time: number,
+	next: number,
 }
 
 export type Home = {
