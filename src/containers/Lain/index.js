@@ -2,17 +2,15 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { type Match, type RouterHistory } from 'react-router-dom'
-import Grid from '@material-ui/core/Grid'
-import NavBar from '../NavBarContainer'
 
 import type { State, Lain } from '../../types'
 import { getLain } from './selectors'
 import { updateHash, voice } from './logic'
+import Fact from '../../components/Fact'
 
 type OProps = {
 	match: Match,
 }
-
 type Props = {
 	lain: ?Lain,
 	time: number,
@@ -21,16 +19,6 @@ type Props = {
 	voice: typeof voice,
 }
 
-const C = (props: Props) => (
-	<div>
-		<Grid container justify="center" style={{ marginBottom: '100px' }}>
-			<Grid item xs={12} md={10}>
-				<div>{JSON.stringify(props.lain)}</div>
-			</Grid>
-		</Grid>
-	</div>
-)
-
 class Container extends React.Component<Props> {
 	componentDidMount() {
 		const { updateHash, time, voice } = this.props
@@ -38,7 +26,8 @@ class Container extends React.Component<Props> {
 		updateHash({ time })
 	}
 	render() {
-		return C(this.props)
+		const { props } = this
+		return <Fact lain={props.lain} />
 	}
 }
 
