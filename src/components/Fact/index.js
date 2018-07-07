@@ -7,26 +7,27 @@ type Props = {
 	lain: ?Lain,
 }
 
+const size = 400
+
 const Root = styled.main`
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	min-width: 1100px;
-	min-height: 650px;
-	background-color: #eee;
+	min-width: ${size}px;
+	min-height: ${size}px;
+	background-color: #210703;
 `
 
 const Screen = styled.div`
 	position: absolute;
-	left: calc(50% - 330px);
-	top: calc(50% - 235px);
-	width: 650px;
-	height: 450px;
+	left: calc(50% - ${size / 2}px);
+	top: calc(50% - ${size / 2}px);
+	width: ${size}px;
+	height: ${size}px;
 	background-color: #fff;
 	border: solid 10px #fff;
-	box-shadow: 0 0 20px #444;
 	overflow: hidden;
 `
 
@@ -73,35 +74,25 @@ const showImage = keyframes`
 
 const Image = styled.div`
 	position: absolute;
+	width: ${size}px;
+	height: ${size}px;
 	top: 0;
 	left: 0;
 	width: 0%;
 	height: 100%;
-	overflow: hidden;
-	&:after {
-		content: '';
-		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 650px;
-		height: 450px;
-		background-size: cover;
-		background-position: center;
-	}
-	&:nth-child(1):after {
+	&:nth-child(1) {
 		background-color: hsla(0, 100%, 50%, 1);
 		animation: ${showImage} 0.6s ease 1.5s forwards;
 	}
-	&:nth-child(2):after {
+	&:nth-child(2) {
 		background-color: hsla(50, 100%, 50%, 1);
 		animation: ${showImage} 0.6s ease 1.7s forwards;
 	}
-	&:nth-child(3):after {
+	&:nth-child(3) {
 		background-color: hsla(100, 100%, 50%, 1);
 		animation: ${showImage} 0.6s ease 1.9s forwards;
 	}
-	&:nth-child(4):after {
+	&:nth-child(4) {
 		background-color: hsla(150, 100%, 50%, 1);
 		animation: ${showImage} 0.6s ease 2.1s forwards;
 	}
