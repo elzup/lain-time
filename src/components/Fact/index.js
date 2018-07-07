@@ -27,16 +27,17 @@ const Screen = styled.div`
 	width: ${size}px;
 	height: ${size}px;
 	background-color: #fff;
-	border: solid 10px #fff;
 	overflow: hidden;
+	border: solid 10px #111;
 `
 
 const Mat = styled.section`
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+	transform: rotate(${v => v.r}deg);
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
 `
 
 const fadeout = keyframes`
@@ -74,28 +75,11 @@ const showImage = keyframes`
 
 const Dimention = styled.div`
 	position: absolute;
-	width: ${size}px;
-	height: ${size}px;
 	left: ${v => v.x}%;
 	top: ${v => v.y}%;
 	width: ${v => v.w}%;
 	height: ${v => v.h}%;
-	&:nth-child(1) {
-		background-color: hsla(0, 100%, 50%, 1);
-		// animation: ${showImage} 0.6s ease 1.5s forwards;
-	}
-	&:nth-child(2) {
-		background-color: hsla(50, 100%, 50%, 1);
-		// animation: ${showImage} 0.6s ease 1.7s forwards;
-	}
-	&:nth-child(3) {
-		background-color: hsla(100, 100%, 50%, 1);
-		// animation: ${showImage} 0.6s ease 1.9s forwards;
-	}
-	&:nth-child(4) {
-		background-color: hsla(150, 100%, 50%, 1);
-		// animation: ${showImage} 0.6s ease 2.1s forwards;
-	}
+	background-color: #${v => v.c};
 `
 
 const Paint = styled.section`
@@ -111,14 +95,40 @@ const Paint = styled.section`
 const C = (props: Props) => {
 	const x = props.lain.d256[0] * 100
 	const y = props.lain.d256[1] * 100
+	const r = props.lain.d256[2] * 360
+	const bmax = 100
+	const border = {
+		bt: props.lain.d256[3] * bmax,
+		br: props.lain.d256[4] * bmax,
+		bb: props.lain.d256[5] * bmax,
+		bl: props.lain.d256[6] * bmax,
+	}
 	return (
 		<Root>
-			<Screen>
-				<Mat>
-					<Dimention x={0} y={0} w={x} h={y} />
-					<Dimention x={0} y={y} w={x} h={100 - y} />
-					<Dimention x={x} y={0} w={100 - x} h={y} />
-					<Dimention x={x} y={y} w={100 - x} h={100 - y} />
+			<Screen {...border}>
+				<Mat r={r}>
+					<Dimention c={props.lain.hash.substr(0, 6)} x={0} y={0} w={x} h={y} />
+					<Dimention
+						c={props.lain.hash.substr(10, 6)}
+						x={0}
+						y={y}
+						w={x}
+						h={100 - y}
+					/>
+					<Dimention
+						c={props.lain.hash.substr(20, 6)}
+						x={x}
+						y={0}
+						w={100 - x}
+						h={y}
+					/>
+					<Dimention
+						c={props.lain.hash.substr(30, 6)}
+						x={x}
+						y={y}
+						w={100 - x}
+						h={100 - y}
+					/>
 				</Mat>
 			</Screen>
 		</Root>
