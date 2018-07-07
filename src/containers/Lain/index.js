@@ -27,6 +27,9 @@ class Container extends React.Component<Props> {
 	}
 	render() {
 		const { props } = this
+		if (!props.lain) {
+			return null
+		}
 		return <Fact lain={props.lain} />
 	}
 }

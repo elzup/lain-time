@@ -4,7 +4,7 @@ import type { Lain } from '../../types'
 import styled, { keyframes } from 'styled-components'
 
 type Props = {
-	lain: ?Lain,
+	lain: Lain,
 }
 
 const size = 400
@@ -31,7 +31,7 @@ const Screen = styled.div`
 	overflow: hidden;
 `
 
-const Images = styled.section`
+const Mat = styled.section`
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -72,29 +72,29 @@ const showImage = keyframes`
   100% { width: 100%; }
 `
 
-const Image = styled.div`
+const Dimention = styled.div`
 	position: absolute;
 	width: ${size}px;
 	height: ${size}px;
-	top: 0;
-	left: 0;
-	width: 0%;
-	height: 100%;
+	left: ${v => v.x}%;
+	top: ${v => v.y}%;
+	width: ${v => v.w}%;
+	height: ${v => v.h}%;
 	&:nth-child(1) {
 		background-color: hsla(0, 100%, 50%, 1);
-		animation: ${showImage} 0.6s ease 1.5s forwards;
+		// animation: ${showImage} 0.6s ease 1.5s forwards;
 	}
 	&:nth-child(2) {
 		background-color: hsla(50, 100%, 50%, 1);
-		animation: ${showImage} 0.6s ease 1.7s forwards;
+		// animation: ${showImage} 0.6s ease 1.7s forwards;
 	}
 	&:nth-child(3) {
 		background-color: hsla(100, 100%, 50%, 1);
-		animation: ${showImage} 0.6s ease 1.9s forwards;
+		// animation: ${showImage} 0.6s ease 1.9s forwards;
 	}
 	&:nth-child(4) {
 		background-color: hsla(150, 100%, 50%, 1);
-		animation: ${showImage} 0.6s ease 2.1s forwards;
+		// animation: ${showImage} 0.6s ease 2.1s forwards;
 	}
 `
 
@@ -108,18 +108,21 @@ const Paint = styled.section`
 	background-color: #444;
 `
 
-const C = (props: Props) => (
-	<Root>
-		<Screen>
-			<Images>
-				<Image />
-				<Image />
-				<Image />
-				<Image />
-			</Images>
-			<Paint />
-		</Screen>
-	</Root>
-)
+const C = (props: Props) => {
+	const x = props.lain.d256[0] * 100
+	const y = props.lain.d256[1] * 100
+	return (
+		<Root>
+			<Screen>
+				<Mat>
+					<Dimention x={0} y={0} w={x} h={y} />
+					<Dimention x={0} y={y} w={x} h={100 - y} />
+					<Dimention x={x} y={0} w={100 - x} h={y} />
+					<Dimention x={x} y={y} w={100 - x} h={100 - y} />
+				</Mat>
+			</Screen>
+		</Root>
+	)
+}
 
 export default C
