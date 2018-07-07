@@ -9,6 +9,9 @@ export const initialState: State = {
 		hash: '',
 		time: 0,
 		next: 0,
+		d16: [],
+		d256: [],
+		d4096: [],
 	},
 }
 

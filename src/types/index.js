@@ -33,6 +33,9 @@ export type Lain = {
 	hash: string,
 	time: number,
 	next: number,
+	d16: number[],
+	d256: number[],
+	d4096: number[],
 }
 
 export type Home = {
