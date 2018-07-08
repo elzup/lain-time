@@ -12,6 +12,7 @@ export const initialState: State = {
 		d16: [],
 		d256: [],
 		d4096: [],
+		loaded: false,
 	},
 }
 
