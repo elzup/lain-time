@@ -1,11 +1,11 @@
 ```
-# lain-time 
+> lain-time 
 
-> Present day, Present time.
+Present day, Present time.
+https://twitter.com/search?q=%23laineverywhere&src=tyah
 
-> https://twitter.com/search?q=%23laineverywhere&src=tyah
-
-## License
+> License
 
 MIT © [elzup](http://elzup.com)
+
 ```
