@@ -6,9 +6,6 @@
 	"static": {
 		"dir": "build"
 	},
-	"hooks": {
-		"build": "node scripts/build.js"
-	},
 	"stages": {
 		"production": {
 			"domain": "lain.elzup.org",
