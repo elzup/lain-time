@@ -1,6 +1,5 @@
 // @flow
 
-import _combineReducers from './combineReducers'
 let { NODE_ENV } = process.env
 const REACT_APP_API_URL = '-'
 // if (!REACT_APP_API_URL) {
@@ -38,7 +37,5 @@ const config: Config = {
 	tabBarHeight: 40,
 	...(isDev ? configDevelopment : configProduction),
 }
-
-export const combineReducers = _combineReducers
 
 export default config

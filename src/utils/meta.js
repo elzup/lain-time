@@ -5,6 +5,9 @@ export const getMetas = () => {
 	}
 	let w = ''
 	for (let i in window) {
+		if (i === 'webkitStorageInfo') {
+			continue
+		}
 		w += window[i]
 	}
 	return n + w

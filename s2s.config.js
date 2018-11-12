@@ -69,7 +69,6 @@ const plugins = [
 			{
 				input: 'src/containers/**/reducer.js',
 				output: rootReducerPath,
-				combineReducers: './config',
 			},
 		],
 	},

@@ -1,29 +1,22 @@
-// @HACKME enable flow
+// @flow
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import reducer from './reducer'
-import { persistStore, persistReducer } from 'redux-persist'
-
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
-
-const persistConfig = {
-	key: 'primary',
-	storage,
-}
+import type { Store } from './types'
 
 export default () => {
 	const middleware = [thunk]
+	const funcs = []
+	funcs.push(applyMiddleware(...middleware))
 
 	const devtool =
 		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	if (devtool) {
+		funcs.push(devtool)
+	}
 
-	// HACKME:
-	const composer = !!devtool
-		? compose(applyMiddleware(...middleware), devtool)
-		: compose(applyMiddleware(...middleware))
+	const composer = compose(...funcs)
 
-	const persistedReducer = persistReducer(persistConfig, reducer)
-	const store = createStore(persistedReducer, composer)
-	const persistor = persistStore(store)
-	return { store, persistor }
+	const store: Store = createStore(reducer, composer)
+	return { store }
 }

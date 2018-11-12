@@ -12,6 +12,11 @@ export const initialState: State = {
 
 export default function(state: State = initialState, action: Action): State {
 	switch (action.type) {
+		case Actions.AHOGE:
+			return {
+				...state,
+			}
+
 		case Actions.CONSCIOUSNESS_TIME:
 			return {
 				...state,
