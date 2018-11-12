@@ -62,5 +62,6 @@ export function voice(): ThunkAction {
 	return async () => {
 		console.log('https://github.com/elzup/lain-time')
 		console.log('https://twitter.com/_elzup_')
+		console.log('https://twitter.com/anozon')
 	}
 }
