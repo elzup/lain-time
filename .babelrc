@@ -1,4 +1,9 @@
 {
 	"presets": ["react-app"],
-	"plugins": ["lodash"]
+	"plugins": [
+		"babel-plugin-styled-components",
+		{
+			"ssr": false
+		}
+	]
 }
