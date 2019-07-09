@@ -1,8 +1,7 @@
-// @flow
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import reducer from './reducer'
-import type { Store } from './types'
+import { Store } from './types'
 
 export default () => {
 	const middleware = [thunk]

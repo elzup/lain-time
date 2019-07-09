@@ -1,22 +1,21 @@
-// @flow
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { type Match, type RouterHistory } from 'react-router-dom'
+import { Match, RouterHistory } from 'react-router-dom'
 
-import type { State, Lain } from '../../types'
+import { State, Lain } from '../../types'
 import { getLain } from './selectors'
 import { updateHash, voice } from './logic'
 import Fact from '../../components/Fact'
 
 type OProps = {
-	match: Match,
+	match: Match
 }
 type Props = {
-	lain: ?Lain,
-	time: number,
-	history: RouterHistory,
-	updateHash: typeof updateHash,
-	voice: typeof voice,
+	lain: Lain | null
+	time: number
+	history: RouterHistory
+	updateHash: (time: number) => void
+	voice: () => void
 }
 
 class Container extends React.Component<Props> {
@@ -41,7 +40,7 @@ const ms = (state: State, op: OProps) => {
 
 const conn = connect(
 	ms,
-	{ updateHash, voice },
+	{ updateHash, voice }
 )
 
 export default conn(Container)

@@ -1,5 +1,4 @@
-// @flow
-import type { Action, Home } from '../../types'
+import { Action, Home } from '../../types'
 import { Actions } from './actionTypes'
 
 export type State = Home

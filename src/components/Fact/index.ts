@@ -1,10 +1,9 @@
-// @flow
 import * as React from 'react'
-import type { Lain } from '../../types'
+import { Lain } from '../../types'
 import styled, { keyframes } from 'styled-components'
 
 type Props = {
-	lain: Lain,
+	lain: Lain
 }
 
 const size = 400
@@ -114,19 +113,19 @@ const C = (props: Props) => {
 	}
 	const ds = [0, 1, 2, 3].map(i => {
 		const hs = [...Array(10).keys()].map(
-			j => props.lain.d256[(i * 8 + j + 1) % 40] * 100,
+			j => props.lain.d256[(i * 8 + j + 1) % 40] * 100
 		)
 		hs.sort((a, b) => a - b)
 
 		return {
 			c: [...Array(10).keys()].map(j =>
-				props.lain.hash.substr((i * 10 + j) % 34, 6),
+				props.lain.hash.substr((i * 10 + j) % 34, 6)
 			),
 			r: [...Array(10).keys()].map(
-				j => props.lain.d256[(i * 8 + j) % 40] * 360,
+				j => props.lain.d256[(i * 8 + j) % 40] * 360
 			),
 			h: [...Array(10).keys()].map(
-				j => props.lain.d256[(i * 8 + j + 2) % 40] * 100,
+				j => props.lain.d256[(i * 8 + j + 2) % 40] * 100
 			),
 			hs,
 		}

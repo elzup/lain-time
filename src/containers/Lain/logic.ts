@@ -1,7 +1,6 @@
-// @flow
 import crypto from 'crypto'
 
-import type { ThunkAction, Lain } from '../../types'
+import { ThunkAction, Lain } from '../../types'
 import * as actions from './actions'
 import { now } from '../../utils'
 import { getMetas } from '../../utils/meta'

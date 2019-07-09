@@ -1,11 +1,10 @@
-// @flow
 import * as React from 'react'
 import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
 
 import App from './containers/App'
 
-import registerServiceWorker from './config/registerServiceWorker'
+import * as serviceWorker from './config/serviceWorker'
 import configureStore from './store'
 
 import './config/init'
@@ -19,7 +18,7 @@ if (rootEl !== null) {
 		<Provider store={store}>
 			<App />
 		</Provider>,
-		rootEl,
+		rootEl
 	)
-	registerServiceWorker()
+	serviceWorker.unregister()
 }

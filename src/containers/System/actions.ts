@@ -1,6 +1,5 @@
-// @flow
 import { FREEZE_TIME, CONSCIOUSNESS_TIME } from './actionTypes'
-import type { FreezeTime, ConsciousnessTime } from './actionTypes'
+import { FreezeTime, ConsciousnessTime } from './actionTypes'
 
 export function freezeTime(): FreezeTime {
 	return {
