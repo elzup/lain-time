@@ -2,14 +2,14 @@ import * as React from 'react'
 import { Ego } from '../../types'
 import styled, { keyframes } from 'styled-components'
 import _ from 'lodash'
+import config from '../../config'
+const { size } = config
 
 type Props = {
 	ego: Ego
 }
 
-const size = 400
-
-const Root = styled.main`
+const Root = styled.div`
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -47,7 +47,7 @@ const Dimention = styled.div`
 	width: ${v => v.w}%;
 	height: ${v => v.h}%;
 	overflow: hidden;
-	transform: rotate(${v => v.r}deg);
+	/* transform: rotate(${v => v.r}deg); */
 `
 
 const kaos = p => keyframes`
@@ -94,7 +94,7 @@ const Content = styled.div`
 	width: 200%;
 	height: 200%;
 	transform: rotate(${p => p.r[3]}deg);
-	animation: ${kaos} ${p => p.h[1]}s linear 0s infinite forwards;
+	/* animation: ${kaos} ${p => p.h[1]}s linear 0s infinite forwards; */
 `
 
 const C = (props: Props) => {
