@@ -1,15 +1,15 @@
-// @flow
 import * as React from 'react'
-import type { Lain } from '../../types'
+import { Ego } from '../../types'
 import styled, { keyframes } from 'styled-components'
+import _ from 'lodash'
+import config from '../../config'
+const { size } = config
 
 type Props = {
-	lain: Lain,
+	ego: Ego
 }
 
-const size = 400
-
-const Root = styled.main`
+const Root = styled.div`
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -47,7 +47,7 @@ const Dimention = styled.div`
 	width: ${v => v.w}%;
 	height: ${v => v.h}%;
 	overflow: hidden;
-	transform: rotate(${v => v.r}deg);
+	/* transform: rotate(${v => v.r}deg); */
 `
 
 const kaos = p => keyframes`
@@ -94,40 +94,32 @@ const Content = styled.div`
 	width: 200%;
 	height: 200%;
 	transform: rotate(${p => p.r[3]}deg);
-	animation: ${kaos} ${p => p.h[1]}s linear 0s infinite forwards;
+	/* animation: ${kaos} ${p => p.h[1]}s linear 0s infinite forwards; */
 `
 
 const C = (props: Props) => {
-	const x = props.lain.d256[0] * 100
-	const y = props.lain.d256[1] * 100
-	const r = props.lain.d256[2] * 360
+	const x = props.ego.d256[0] * 100
+	const y = props.ego.d256[1] * 100
+	const r = props.ego.d256[2] * 360
 	// const x = 50
 	// const y = 50
 	// const r = 0
 
 	const bmax = 100
 	const border = {
-		bt: props.lain.d256[3] * bmax,
-		br: props.lain.d256[4] * bmax,
-		bb: props.lain.d256[5] * bmax,
-		bl: props.lain.d256[6] * bmax,
+		bt: props.ego.d256[3] * bmax,
+		br: props.ego.d256[4] * bmax,
+		bb: props.ego.d256[5] * bmax,
+		bl: props.ego.d256[6] * bmax,
 	}
 	const ds = [0, 1, 2, 3].map(i => {
-		const hs = [...Array(10).keys()].map(
-			j => props.lain.d256[(i * 8 + j + 1) % 40] * 100,
-		)
+		const hs = _.range(10).map(j => props.ego.d256[(i * 8 + j + 1) % 40] * 100)
 		hs.sort((a, b) => a - b)
 
 		return {
-			c: [...Array(10).keys()].map(j =>
-				props.lain.hash.substr((i * 10 + j) % 34, 6),
-			),
-			r: [...Array(10).keys()].map(
-				j => props.lain.d256[(i * 8 + j) % 40] * 360,
-			),
-			h: [...Array(10).keys()].map(
-				j => props.lain.d256[(i * 8 + j + 2) % 40] * 100,
-			),
+			c: _.range(10).map(j => props.ego.hash.substr((i * 10 + j) % 34, 6)),
+			r: _.range(10).map(j => props.ego.d256[(i * 8 + j) % 40] * 360),
+			h: _.range(10).map(j => props.ego.d256[(i * 8 + j + 2) % 40] * 100),
 			hs,
 		}
 	})
