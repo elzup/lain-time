@@ -2,7 +2,7 @@
 	"name": "lain-time",
 	"version": "1.0.0",
 	"private": true,
-	"homepage": "https://lain.elzup.org",
+	"homepage": "https://lain.anozon.me",
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
