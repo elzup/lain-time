@@ -1,4 +1,4 @@
-# [lain-time](https://lain.elzup.org/)
+# [lain-time](https://lain.anozon.me/)
 
 > Present day, Present time.
 
