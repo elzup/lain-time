@@ -1,23 +1,18 @@
 import * as React from 'react'
+import { useHistory, useParams } from 'react-router-dom'
 import Fact from '../../components/Fact'
-import useRouter from '../App/useRouter'
-import { makeEgo } from './logic'
 import { now } from '../../utils'
+import { makeEgo } from './logic'
 
-type Props = {}
-const sleep = msec => new Promise(resolve => setTimeout(resolve, msec))
+const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec))
 
-function LainComponent(props: Props) {
-	const {
-		match: {
-			params: { time },
-		},
-		history: { push },
-	} = useRouter<{ time: number }>()
-	const ego = makeEgo(time)
+function LainComponent() {
+	const history = useHistory()
+	const { time } = useParams<{ time: string }>()
+	const ego = makeEgo(Number(time))
 	React.useEffect(() => {
-		sleep(ego.next).then(() => push(`/0/${now()}`))
-	}, [time, push, ego.next])
+		sleep(ego.next).then(() => history.push(`/0/${now()}`))
+	}, [time, ego.next, history])
 	return <Fact ego={ego} />
 }
 
