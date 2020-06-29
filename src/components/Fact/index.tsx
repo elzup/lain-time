@@ -33,7 +33,7 @@ const Screen = styled.div`
 
 const Mat = styled.section`
 	position: absolute;
-	transform: rotate(${v => v.r}deg);
+	transform: rotate(${(v) => v.r}deg);
 	top: -50%;
 	left: -50%;
 	width: 200%;
@@ -42,15 +42,15 @@ const Mat = styled.section`
 
 const Dimention = styled.div`
 	position: absolute;
-	left: ${v => v.x}%;
-	top: ${v => v.y}%;
-	width: ${v => v.w}%;
-	height: ${v => v.h}%;
+	left: ${(v) => v.x}%;
+	top: ${(v) => v.y}%;
+	width: ${(v) => v.w}%;
+	height: ${(v) => v.h}%;
 	overflow: hidden;
-	transform: rotate(${v => v.r}deg);
+	transform: rotate(${(v) => v.r}deg);
 `
 
-const kaos = p => keyframes`
+const kaos = (p) => keyframes`
   0% {
 		background: linear-gradient(
 			${p.r[0]}deg,
@@ -93,8 +93,8 @@ const Content = styled.div`
 	margin: -50%;
 	width: 200%;
 	height: 200%;
-	transform: rotate(${p => p.r[3]}deg);
-	animation: ${kaos} ${p => p.h[1]}s linear 0s infinite forwards;
+	transform: rotate(${(p) => p.r[3]}deg);
+	animation: ${kaos} ${(p) => p.h[1]}s linear 0s infinite forwards;
 `
 
 const C = (props: Props) => {
@@ -112,14 +112,16 @@ const C = (props: Props) => {
 		bb: props.ego.d256[5] * bmax,
 		bl: props.ego.d256[6] * bmax,
 	}
-	const ds = [0, 1, 2, 3].map(i => {
-		const hs = _.range(10).map(j => props.ego.d256[(i * 8 + j + 1) % 40] * 100)
+	const ds = [0, 1, 2, 3].map((i) => {
+		const hs = _.range(10).map(
+			(j) => props.ego.d256[(i * 8 + j + 1) % 40] * 100
+		)
 		hs.sort((a, b) => a - b)
 
 		return {
-			c: _.range(10).map(j => props.ego.hash.substr((i * 10 + j) % 34, 6)),
-			r: _.range(10).map(j => props.ego.d256[(i * 8 + j) % 40] * 360),
-			h: _.range(10).map(j => props.ego.d256[(i * 8 + j + 2) % 40] * 100),
+			c: _.range(10).map((j) => props.ego.hash.substr((i * 10 + j) % 34, 6)),
+			r: _.range(10).map((j) => props.ego.d256[(i * 8 + j) % 40] * 360),
+			h: _.range(10).map((j) => props.ego.d256[(i * 8 + j + 2) % 40] * 100),
 			hs,
 		}
 	})
