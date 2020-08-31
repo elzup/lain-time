@@ -10,20 +10,20 @@
 		"precommit": "lint-staged"
 	},
 	"dependencies": {
-		"lodash": "4.17.19",
+		"lodash": "4.17.20",
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
 		"react-router-dom": "5.2.0",
-		"react-scripts": "3.4.1",
+		"react-scripts": "3.4.3",
 		"styled-components": "5.1.1"
 	},
 	"devDependencies": {
-		"@types/lodash": "4.14.158",
-		"@types/react": "16.9.43",
+		"@types/lodash": "4.14.161",
+		"@types/react": "16.9.49",
 		"@types/react-router-dom": "5.1.5",
 		"husky": "4.2.5",
-		"lint-staged": "10.2.11",
-		"prettier": "2.0.5",
+		"lint-staged": "10.2.13",
+		"prettier": "2.1.1",
 		"typescript": "3.9.7"
 	},
 	"lint-staged": {
