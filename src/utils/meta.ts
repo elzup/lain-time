@@ -12,3 +12,5 @@ export const getMetas = () => {
 	}
 	return n + w
 }
+
+export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))

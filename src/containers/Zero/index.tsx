@@ -2,4 +2,5 @@ import * as React from 'react'
 import { Redirect } from 'react-router-dom'
 import { now } from '../../utils'
 
-export default () => <Redirect to={`/0/${now()}`} />
+const Regenerate = () => <Redirect to={`/0/${now()}`} />
+export default Regenerate
