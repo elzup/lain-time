@@ -1,19 +1,18 @@
-import React from 'react'
-import { Router, Route, Switch } from 'react-router-dom'
-
-import Lain from '../Lain'
-import Zero from '../Zero'
-
 import { createBrowserHistory } from 'history'
+import React, { useEffect } from 'react'
+import { useQ } from '../../hooks'
+import Lain from '../Lain'
+
 export const history = createBrowserHistory()
 
-const RouteApp = () => (
-	<Router history={history}>
-		<Switch>
-			<Route exact path="/" component={Zero} />
-			<Route exact path="/0" component={Zero} />
-			<Route exact path="/0/:time" component={Lain} />
-		</Switch>
-	</Router>
-)
+const RouteApp = () => {
+	const { q, inc } = useQ()
+
+	useEffect(() => {
+		if (typeof q === 'number') return
+		inc()
+	}, [q])
+
+	return <Lain />
+}
 export default RouteApp

@@ -1,4 +1,4 @@
-import crypto from 'crypto'
+import crypto from 'crypto-js'
 import _ from 'lodash'
 
 import { getMetas } from '../../utils/meta'

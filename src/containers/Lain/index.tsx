@@ -1,20 +1,20 @@
 import * as React from 'react'
-import { useHistory, useParams } from 'react-router-dom'
 import Fact from '../../components/Fact'
-import { now, sleep } from '../../utils'
+import { useQ } from '../../hooks'
+import { sleep } from '../../utils'
 import { makeEgo } from './logic'
 
 export function useConnect(cur: string, delay: number) {
-	const history = useHistory()
+	const { inc } = useQ()
 	React.useEffect(() => {
-		sleep(delay).then(() => history.push(`/0/${now()}`))
-	}, [cur, delay, history])
+		sleep(delay).then(() => inc())
+	}, [cur, delay])
 }
 
 function LainComponent() {
-	const { time } = useParams<{ time: string }>()
-	const ego = makeEgo(Number(time))
-	useConnect(time, ego.next)
+	const { q } = useQ()
+	const ego = makeEgo(Number(q))
+	useConnect(String(q), ego.next)
 
 	return <Fact ego={ego} />
 }
