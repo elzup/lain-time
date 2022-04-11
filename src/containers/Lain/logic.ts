@@ -1,9 +1,7 @@
-import _ from 'lodash'
-
-import { getMetas } from '../../utils/meta'
-import { Ego } from '../../types'
-import createHash from 'create-hash'
 import sha1 from 'crypto-js/sha1'
+import _ from 'lodash'
+import { Ego } from '../../types'
+import { getMetas } from '../../utils/meta'
 
 const getRand = (dpi: number, offset: number, rands: number[]) => {
 	const l = rands.length
