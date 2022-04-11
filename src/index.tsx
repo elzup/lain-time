@@ -1,21 +1,21 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import { QueryParamProvider } from 'use-query-params'
 import * as serviceWorker from './config/serviceWorker'
 import App from './containers/App'
 import { voice } from './containers/Lain/logic'
 
 const rootEl = document.getElementById('root')
+const root = ReactDOM.createRoot(rootEl)
 
 voice()
-if (rootEl !== null) {
-	ReactDOM.createRoot(rootEl).render(
-		<React.StrictMode>
-			<QueryParamProvider>
-				<App />
-			</QueryParamProvider>
-		</React.StrictMode>,
-		rootEl
-	)
-	serviceWorker.unregister()
-}
+
+root.render(
+	<React.StrictMode>
+		<QueryParamProvider>
+			<App />
+		</QueryParamProvider>
+	</React.StrictMode>,
+	rootEl
+)
+serviceWorker.unregister()

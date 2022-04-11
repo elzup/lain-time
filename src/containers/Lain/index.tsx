@@ -15,6 +15,7 @@ function LainComponent() {
 	const { q } = useQ()
 	const ego = makeEgo(Number(q))
 	useConnect(String(q), ego.next)
+	console.log(ego)
 
 	return <Fact ego={ego} />
 }
