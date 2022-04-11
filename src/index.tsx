@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { QueryParamProvider } from 'use-query-params'
 import * as serviceWorker from './config/serviceWorker'
 import App from './containers/App'
 import { voice } from './containers/Lain/logic'
@@ -12,9 +11,7 @@ voice()
 
 root.render(
 	<React.StrictMode>
-		<QueryParamProvider>
-			<App />
-		</QueryParamProvider>
+		<App />
 	</React.StrictMode>,
 	rootEl
 )

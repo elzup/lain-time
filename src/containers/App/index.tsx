@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
+import { QueryParamProvider } from 'use-query-params'
 import { useQ } from '../../hooks'
 import Lain from '../Lain'
+import { Router, globalHistory, RouteComponentProps } from '@reach/router'
 
-const RouteApp = () => {
+const Zero = (props: RouteComponentProps) => {
 	const { q, inc } = useQ()
 
 	useEffect(() => {
@@ -11,5 +13,15 @@ const RouteApp = () => {
 	}, [q])
 
 	return <Lain />
+}
+
+const RouteApp = () => {
+	return (
+		<Router>
+			<QueryParamProvider {...{ path: '/' }} reachHistory={globalHistory}>
+				<Zero path="/" />
+			</QueryParamProvider>
+		</Router>
+	)
 }
 export default RouteApp
