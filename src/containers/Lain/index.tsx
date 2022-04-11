@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react'
 import Fact from '../../components/Fact'
 import { useQ } from '../../hooks'
-import { sleep } from '../../utils'
+import { look } from '../../utils'
 import { makeEgo } from './logic'
 
 export function useConnect(cur: string, delay: number) {
 	const { inc } = useQ()
 	useEffect(() => {
-		sleep(Math.floor(delay)).then(() => inc())
-	}, [cur, delay])
+		console.log('effect')
+
+		const { info, del } = look(Math.floor(delay))
+		info().then(inc)
+		return () => {
+			del && clearTimeout(del)
+		}
+	}, [cur, delay, inc])
 }
 
 function LainComponent() {
