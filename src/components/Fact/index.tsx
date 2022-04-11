@@ -17,13 +17,15 @@ const Root = styled.div`
 	height: 100%;
 	min-width: ${size}px;
 	min-height: ${size}px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	background-color: #210703;
 `
 
 const Screen = styled.div`
-	position: absolute;
-	left: calc(50% - ${size / 2}px);
-	top: calc(50% - ${size / 2}px);
+	position: relative;
 	width: ${size}px;
 	height: ${size}px;
 	background-color: #fff;
