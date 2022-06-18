@@ -15,8 +15,8 @@
 		"crypto-js": "^4.1.1",
 		"lodash": "4.17.21",
 		"query-string": "^7.1.1",
-		"react": "18.0.0",
-		"react-dom": "18.0.0",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
 		"react-scripts": "5.0.0",
 		"styled-components": "5.3.5",
 		"use-query-params": "^1.2.3"
